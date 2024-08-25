@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base :: head"></head>
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+		
+	<main class="container main-full">
+	  
+		<h2 class="section-title">Productos</h2>
+		<div class="row">
+	        <!-- Cards de Productos -->
+	        <div th:each="product : ${products}" class="col-md-3 card--product">
+	            <a th:href="'/products/'+${product.id}" class="card mb-4">
+	                <img th:src="@{'/uploads/' + ${product.photo}}" class="card-img-top" alt="Imagen del Producto" style="object-fit: cover; height: 200px;">
+	                <div class="card-body">
+	                    <h5 class="card-title" th:text="${product.name}">Nombre del Producto</h5>
+	                    <p class="card-text" th:text="'S/'+${product.price}">Precio</p>
+	                    <!-- Botones de acción si son necesarios -->
+	                </div>
+	            </a>
+	        </div>
+    	</div>
+	</main>	
+
+</body>
+</html>

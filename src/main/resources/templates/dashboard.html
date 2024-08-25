@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base :: head"></head>
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+		
+	<main class="container mt-4">
+	
+			<h2 class="section-title">Bienvenido Administrador</h2>
+			<div class="row row-cols-1 row-cols-md-3 g-4">
+				<!-- Sales Card -->
+		        <div class="col">
+		            <div class="card text-white bg-success mb-3">
+		                <div class="card-header">Ventas</div>
+		                <div class="card-body">
+		                    <h5 class="card-title">Total Ventas</h5>
+		                    <p class="card-text" th:text="${totalSales}">$50,000</p>
+		                </div>
+		            </div>
+		        </div>
+		        <!-- Orders Card -->
+		        <div class="col">
+		            <div class="card text-white bg-primary mb-3">
+		                <div class="card-header">Categorias</div>
+		                <div class="card-body">
+		                    <h5 class="card-title">Total Categorias</h5>
+		                    <p class="card-text" th:text="${totalCategories}">123</p>
+		                </div>
+		            </div>
+		        </div>
+		        <!-- Products Card -->
+		        <div class="col">
+		            <div class="card text-white bg-info mb-3">
+		                <div class="card-header">Productos</div>
+		                <div class="card-body">
+		                    <h5 class="card-title">Total Productos</h5>
+		                    <p class="card-text" th:text="${totalProducts}">320</p>
+		                </div>
+		            </div>
+		        </div>
+		    </div>
+	        
+	        <div class="container">
+			  <div class="row">
+			    <div class="col-8">
+			      
+			      <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+		        <h2 class="section-title">Productos</h2>
+		        <a href="/dashboard/products/create" class="btn btn-primary">+ Añadir Nuevo</a>
+		    </div>
+		
+		    <table class="table">
+		        <thead class="table-dark">
+		            <tr>
+		                <th width="15%">Foto</th>
+		                <th width="35%">Nombre</th>
+		                <th width="10%">Precio</th>
+		                <th width="20%">Categoría</th>
+		                <th width="20%">Acciones</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr th:each="product : ${products}">
+					    <td><img th:src="@{'/uploads/' + ${product.photo}}" alt="Product Image" style="width: 50px; height: 50px;"></td>
+					    <td th:text="${product.name}">Nombre del Producto</td>
+					    <td th:text="${product.price}">$999</td>
+					    <td th:text="${product.category.name}">Categoría del Producto</td>
+					    <td>
+					        <a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-warning btn-sm">
+					            <span class="fa fa-pencil"></span>
+					        </a>
+					        <a th:href="@{'/products/delete/' + ${product.id}}" class="btn btn-danger btn-sm">
+					            <span class="fa fa-trash"></span>
+					        </a>
+					    </td>
+					</tr>
+		        </tbody>
+		    </table>
+			      
+		</div>
+		<div class="col">
+			  
+			      <div class="d-flex justify-content-between align-items-center mb-4 mt-3">
+		        <h2 class="section-title">Categorias</h2>
+		        <a href="/dashboard/categories/create" class="btn btn-primary">+ Añadir Nuevo</a>
+		    </div>
+		
+		    <table class="table">
+		        <thead class="table-dark">
+		            <tr>
+		                <th width="75%">Nombre</th>
+		                <th width="25%">Acciones</th>
+		            </tr>
+		        </thead>
+		        <tbody>
+		            <tr th:each="category : ${categories}">
+					    <td th:text="${category.name}">Nombre</td>
+					    <td>
+					        <a th:href="@{'/categories/edit/' + ${category.id}}" class="btn btn-warning btn-sm">
+					            <span class="fa fa-pencil"></span>
+					        </a>
+					        <a th:href="@{'/categories/delete/' + ${category.id}}" class="btn btn-danger btn-sm">
+					            <span class="fa fa-trash"></span>
+					        </a>
+					    </td>
+					</tr>
+		        </tbody>
+		    </table>
+			      
+			    </div>
+			  </div>
+			 </div>
+		
+		
+	</main>	
+
+</body>
+</html>

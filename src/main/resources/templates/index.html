@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base :: head"></head>
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+	
+	<main>
+		
+	    <div class="banner_principal">
+            <figure>
+                <img src="https://http2.mlstatic.com/D_NQ_916842-MLA50646423917_072022-OO.webp" alt="">
+            </figure>
+        </div>
+		<!-- Start Product Section -->
+		<div class="product-section">
+			<div class="container">
+				<div class="row">
+
+
+				</div>
+			</div>
+		</div>
+		
+		<!-- End Product Section -->
+		<div style="height:200px;"></div>
+	</main>
+	<div th:fragment="footer" th:replace="fragments/footer :: footer"></div>
+	<th:block th:include="layouts/base :: scripts"></th:block>
+</body>
+</html>

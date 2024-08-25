@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base :: head"></head>
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+		
+	<main class="container mt-4">
+    <h3>Crear Producto</h3>
+    <form th:action="@{/dashboard/products/create}" method="post" enctype="multipart/form-data">
+        <div class="mb-3">
+            <label for="name" class="form-label">Nombre del Producto</label>
+            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre del Producto" required>
+        </div>
+        <div class="mb-3">
+            <label for="category" class="form-label">Categoría</label>
+            <select class="form-select" id="category" name="category">
+            	<option>Seleccione</option>
+				<option th:each="category: ${categories}" th:value="${category.id}" th:text="${category.name}"></option>
+            </select>
+        </div>
+        <div class="mb-3">
+            <label for="description" class="form-label">Descripcion del Producto</label>
+            <textarea class="form-control" rows="4" id="description" name="description" placeholder="Descripcion detallada del producto" required></textarea>
+        </div>
+        <div class="mb-3">
+            <label for="price" class="form-label">Precio</label>
+            <input type="number" class="form-control" id="price" name="price" placeholder="Precio" required>
+        </div>
+        <div class="mb-3">
+            <label for="image" class="form-label">Foto del Producto</label>
+            <input class="form-control" type="file" id="image" name="image">
+        </div>
+        
+        <button type="submit" class="btn btn-primary">Crear Producto</button>
+    </form>
+</main> 
+
+</body>
+</html>

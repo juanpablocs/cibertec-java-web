@@ -1,0 +1,19 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base :: head"></head>
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+		
+	<main class="container mt-4">
+	    <h3>Crear Categoria</h3>
+	    <form th:action="@{/dashboard/categories/create}" method="post" enctype="multipart/form-data">
+	        <div class="mb-3">
+	            <label for="name" class="form-label">Nombre de la categoria</label>
+	            <input type="text" class="form-control" id="name" name="name" placeholder="Nombre de categoria" required>
+	        </div>
+	        <button type="submit" class="btn btn-primary">Crear categoria</button>
+	    </form>
+	</main> 
+
+</body>
+</html>

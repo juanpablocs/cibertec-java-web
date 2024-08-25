@@ -1,0 +1,34 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head th:replace="layouts/base :: head"></head>
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+		
+	<main class="form-signin">
+	  <form th:action="@{/auth/login}" method="post">
+	   
+	    <h1 class="h3 mb-3 fw-normal">Inicia Sesion</h1>
+	
+	    <div class="form-floating">
+	      <input type="email" class="form-control" name="email" id="floatingInput" placeholder="name@example.com">
+	      <label for="floatingInput">Correo electronico</label>
+	    </div>
+	    <div class="form-floating">
+	      <input type="password" name="password" class="form-control" id="floatingPassword" placeholder="Password">
+	      <label for="floatingPassword">Contrasena</label>
+	    </div>
+	
+	    <div class="checkbox mb-3">
+	      <label>
+	        <input type="checkbox" value="remember-me"> Recuerdame
+	      </label>
+	    </div>
+	    <button class="w-100 btn btn-lg btn-primary" type="submit">Inicia Sesion</button>
+	    <p class="mt-2 mb-2 text-muted text-center">o</p>
+	    <button class="w-100 btn btn-lg" type="button" onclick="window.location.href='/auth/register'">Registrate</button>
+	  </form>
+	</main>	
+
+</body>
+</html>
+	
