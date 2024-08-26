@@ -1,43 +1,58 @@
 <!DOCTYPE html>
 <html xmlns:th="http://www.thymeleaf.org">
+
 <head th:replace="layouts/base :: head"></head>
+
 <body>
 	<div th:replace="fragments/header_fragment :: header"></div>
-		
+
 	<main class="container main-full">
-	  
+
 		<div class="row">
-        <!-- Foto Principal del Producto -->
-        <div class="col-md-6">
-            <img th:src="@{'/uploads/' + ${product.photo}}" class="img-fluid" alt="Product Image">
-        </div>
+			<!-- Foto Principal del Producto -->
+			<div class="col-md-6">
+				<img th:src="@{'/uploads/' + ${product.photo}}" class="img-fluid" alt="Product Image">
+			</div>
 
-        <!-- Detalles del Producto -->
-        <div class="col-md-6">
-            <div class="product-details">
-                <h1 class="product-title" th:text="${product.name}">Nombre del Producto</h1>
-                <p class="product-description" th:text="${product.description}">
-                    Descripción extensa del producto...
-                </p>
-                <h2 class="product-price" th:text="'S/'+${product.price}"></h2>
-                <button class="btn btn-primary btn-lg">Comprar</button>
-                <div class="card mt-3">
-				  <div class="row g-0">
-				    <div class="col-md-2" style="display:flex;align-items:center;">
-				      <img th:src="@{'/uploads/' + ${merchant.image}}" class="img-fluid rounded-start" alt="...">
-				    </div>
-				    <div class="col-md-10">
-				      <div class="card-body">
-				        <h5 class="card-title" th:text="${merchant.merchantName}">Vendedor X</h5>
-				        <p class="card-text" th:text="${merchant.description}">This is a wider card with supporting text below as a natural lead-in to additional content. This content is a little bit longer.</p>
-				      </div>
-				    </div>
-				  </div>
+			<!-- Detalles del Producto -->
+			<div class="col-md-6">
+				<div class="product-details">
+					<form method="post" th:action="@{/products/guardar}" th:object="${product}">
+						<div class="mb-3">
+							<label>Codigo</label>
+							<input class="form-control" type="text" th:field="*{id}" readonly></input>
+						</div>
+						<div class="mb-3" hidden>
+							<label>Codigo</label>
+							<input class="form-control" type="text" th:field="*{photo}" readonly></input>
+						</div>
+						<div class="mb-3">
+							<label>Nombre</label>
+							<input class="form-control" type="text" th:field="*{name}"></input>
+						</div>
+						<div class="mb-3">
+							<label>Precio (S/.)</label>
+							<input class="form-control" type="number" th:field="*{price}"></input>
+						</div>
+						<div class="mb-3">
+							<label class="form-label">Categoría</label>
+							<select class="form-select" th:field="*{category.id}">
+								<option th:each="cat: ${category}" th:value="${cat.id}" th:text="${cat.name}"></option>
+							</select>
+						</div>
+						<div class="mb-3">
+							<label>Descripcion</label>
+							<textarea class="form-control" th:field="*{description}"></textarea>
+						</div>
+						<div class="mb-3">
+							<button class="btn btn-primary">Actualizar</button>
+							<a class="ms-2" href="./dashboard">Regresar</a>
+						</div>
+					</form>
 				</div>
-            </div>
-        </div>
-    </div>
-	</main>	
-
+			</div>
+		</div>
+	</main>
 </body>
+
 </html>
