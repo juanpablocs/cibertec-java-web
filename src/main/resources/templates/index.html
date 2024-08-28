@@ -2,29 +2,55 @@
 <html xmlns:th="http://www.thymeleaf.org">
 <head th:replace="layouts/base :: head"></head>
 <body>
-	<div th:replace="fragments/header_fragment :: header"></div>
-	
-	<main>
-		
-	    <div class="banner_principal">
+    <div th:replace="fragments/header_fragment :: header"></div>
+    
+    <main>
+        
+        <div class="banner_principal">
             <figure>
                 <img src="https://http2.mlstatic.com/D_NQ_916842-MLA50646423917_072022-OO.webp" alt="">
             </figure>
         </div>
-		<!-- Start Product Section -->
-		<div class="product-section">
-			<div class="container">
-				<div class="row">
-
-
-				</div>
-			</div>
-		</div>
-		
-		<!-- End Product Section -->
-		<div style="height:200px;"></div>
-	</main>
-	<div th:fragment="footer" th:replace="fragments/footer :: footer"></div>
-	<th:block th:include="layouts/base :: scripts"></th:block>
+        
+        <!-- Start Product Section -->
+        <div class="product-section">
+            <div class="container">
+                <h2 style="color:black;margin:10px 0 25px 0;">Productos de tecnología recomendados</h2>
+                
+                <div class="row">
+                    <div class="col-3">
+                        <div class="card" style="width: 18rem;">
+                        	<ul class="list-group list-group-flush">
+                            	<li class="list-group-item" th:each="category : ${categories}">
+                                	<a href="#" th:text="${category.name}"></a>
+                            	</li>
+                        	</ul>
+                        </div>
+                    </div>
+                    
+                    <div class="col-9">
+                        <div class="row">
+                            <div class="col-md-4 mb-4" th:each="product : ${products}">
+                                <div class="card h-100">
+                                    <img class="card-img-top" th:src="@{'/uploads/' + ${product.photo}}" th:alt="${product.name}">
+                                    <div class="card-body">
+                                        <h5 class="card-title" th:text="${product.name}"></h5>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    
+                </div>
+            </div>
+        </div>
+        
+        <!-- End Product Section -->
+        <div style="height:200px;"></div>
+    </main>
+    
+    <div th:fragment="footer" th:replace="fragments/footer :: footer"></div>
+    <th:block th:include="layouts/base :: scripts"></th:block>
 </body>
 </html>
+
