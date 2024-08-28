@@ -16,7 +16,6 @@ public class Product {
     
     private String photo;
     
-    @Lob
     private String description;
 
     private Integer price;
