@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+
+<head th:replace="layouts/base :: head"></head>
+
+<body>
+	<div th:replace="fragments/header_fragment :: header"></div>
+
+	<main class="container main-full">
+
+		<div class="row">
+			
+				<div class="product-details">
+					<form method="post" th:action="@{/products/guardar}" th:object="${product}">
+						<div class="mb-3">
+							<label>Codigo</label>
+							<input class="form-control" type="text" th:field="*{id}" readonly></input>
+						</div>
+						
+						<div class="mb-3">
+							<label>Nombre</label>
+							<input class="form-control" type="text" th:field="*{name}"></input>
+						</div>
+						
+						<div class="mb-3">
+							<button class="btn btn-primary">Actualizar</button>
+							<a class="ms-2" href="./dashboard">Regresar</a>
+						</div>
+					</form>
+				</div>
+			
+		</div>
+	</main>
+</body>
+
+</html>

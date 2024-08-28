@@ -69,7 +69,7 @@
 					        <a th:href="@{'/products/edit/' + ${product.id}}" class="btn btn-warning btn-sm">
 					            <span class="fa fa-pencil"></span>
 					        </a>
-					        <a th:href="@{'/products/delete/' + ${product.id}}" class="btn btn-danger btn-sm">
+					        <a th:href="@{'/products/delete/' + ${product.id}}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar este producto?');">
 					            <span class="fa fa-trash"></span>
 					        </a>
 					    </td>
@@ -96,10 +96,10 @@
 		            <tr th:each="category : ${categories}">
 					    <td th:text="${category.name}">Nombre</td>
 					    <td>
-					        <a th:href="@{'/categories/edit/' + ${category.id}}" class="btn btn-warning btn-sm">
+					        <a th:href="@{'/categorias/edit/' + ${category.id}}" class="btn btn-warning btn-sm">
 					            <span class="fa fa-pencil"></span>
 					        </a>
-					        <a th:href="@{'/categories/delete/' + ${category.id}}" class="btn btn-danger btn-sm">
+					        <a th:href="@{'/categorias/delete/' + ${category.id}}" class="btn btn-danger btn-sm" onclick="return confirm('¿Estás seguro de que deseas eliminar esta categoría?');">
 					            <span class="fa fa-trash"></span>
 					        </a>
 					    </td>
