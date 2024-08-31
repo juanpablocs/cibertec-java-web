@@ -11,7 +11,7 @@
 		<div class="row">
 			
 				<div class="product-details">
-					<form method="post" th:action="@{/products/guardar}" th:object="${product}">
+					<form method="post" th:action="@{/categorias/guardar}" th:object="${category}">
 						<div class="mb-3">
 							<label>Codigo</label>
 							<input class="form-control" type="text" th:field="*{id}" readonly></input>
